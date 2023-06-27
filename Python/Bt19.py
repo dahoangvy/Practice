@@ -5,7 +5,7 @@ try:
     soThu1 = float(nhapVao[0])
     soThu2 = float(nhapVao[2])
     phepTinh = nhapVao[1]
-    ketQua = 0
+    ketQua = None
     
     if phepTinh == "+":
         ketQua = soThu1 + soThu2
@@ -18,6 +18,7 @@ try:
             print('So bi chia phai khac 0')
         else:
             ketQua = soThu1/soThu2
-    print(f'Ket qua cua phep tinh {soThu1} {phepTinh} {soThu2} la: {ketQua}')
+    if ketQua != None:
+        print(f'Ket qua cua phep tinh {soThu1} {phepTinh} {soThu2} la: {ketQua}')
 except:
     print('Đầu vào không hợp lệ')
