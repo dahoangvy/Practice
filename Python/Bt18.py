@@ -7,4 +7,4 @@ try:
     daySo = map(float, chuoiSo.split())
     print(sum(daySo))
 except:
-    print('Đầu vao không hợp lệ')
+    print('Đầu vào không hợp lệ')
