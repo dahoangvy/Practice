@@ -15,28 +15,25 @@ from unidecode import unidecode
 # app.run_polling()
 
 
-def getWeather(city):
-    city = unidecode(city.lower().replace(" ", "+"))
-    url = f"https://www.google.com/search?q={city}+weather"
 
+def getWeather(city):
+    API_KEY = "729e9a6e05275c18609441979a14b651"
+    city = unidecode(city.capitalize())
+    url_city = f"http://api.openweathermap.org/geo/1.0/direct?q={city},&appid={API_KEY}"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    # time = soup.select('.wob_dts').text()
-    # # info = soup.select('.wob_dc').text()
-    temperature = soup.select('#wob_tm')[0].getText().strip()
-
-    return temperature
+    repo_city = requests.get(url_city,headers)
+    location = repo_city.json()[0]
+    lat = location['lat']
+    lon = location['lon']
+    city = location['name']
 
 
-print(getWeather("Hà Nội"))
+    url_weather = f"https://pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API_KEY}"
+    repo_weather = requests.get(url_weather, headers)
+    weather = repo_weather
+    return weather
 
-# headers = {
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-# response = requests.get(url, headers=headers)
-# soup = BeautifulSoup(response.text, "html.parser")
-# urlrp = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text=Hello"
-# requests.post(urlrp)
+print(getWeather("Ho Chi Minh"))
+
