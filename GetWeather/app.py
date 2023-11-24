@@ -2,7 +2,7 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
 from unidecode import unidecode
-from config import API_KEY, bot_token
+from config import bot_token, API_KEY
 from datetime import datetime, timedelta
 
 
