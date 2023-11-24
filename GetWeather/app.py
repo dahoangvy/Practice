@@ -28,7 +28,7 @@ def getWeather(city):
     # API để get vĩ độ và kinh độ của thành phố
     url_city = f"http://api.openweathermap.org/geo/1.0/direct?q={city},&appid={KEY}"
 
-    # Get request lấy dữ liệu latm lon
+    # Get request lấy dữ liệu lat lon
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     repo_city = requests.get(url_city, headers)
